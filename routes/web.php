@@ -119,6 +119,7 @@ Route::get('/', 'IndexController@index');
 Route::post('savejobalert', 'IndexController@savejobalert');
 Route::get('about-us', 'IndexController@aboutus_page');
 Route::get('cv/create', 'IndexController@CreateCV');
+Route::get('cv/manage', 'IndexController@manageCV');
 Route::get('cv/view/{fileName}', 'IndexController@ViewCV');
 Route::get('careers-with-us', 'IndexController@careers_with_page');
 

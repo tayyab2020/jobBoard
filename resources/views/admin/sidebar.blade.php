@@ -76,7 +76,7 @@
 
                     <li class="{{classActivePath('savedjobs')}}"><a href="{{ URL::to('admin/savedjobs') }}"><i class="md md-pin-drop"></i>Saved Jobs</a></li>
 
-                    <li class="{{classActivePath('CV')}}"><a href="{{ URL::to('admin/cv/view') }}"><i class="fa fa-file"></i>Manage CV</a></li>
+                    <li class="{{classActivePath('CV')}}"><a href="{{ URL::to('cv/manage') }}"><i class="fa fa-file"></i>Manage CV</a></li>
 
                 @endif
 
