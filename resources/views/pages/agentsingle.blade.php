@@ -209,12 +209,7 @@
                                   <th>{{$agent->parttime_available==1 || $agent->parttime_available=='on'?'Yes':'No'}}</th>
                               </tr>
                           @endif
-                          @if(isset($agent->parttime_available_input) && $agent->parttime_available_input)
-                              <tr>
-                                  <th>Part Time Availability Hours</th>
-                                  <th>{{$agent->parttime_available_input}}</th>
-                              </tr>
-                          @endif
+
                           @if(isset($agent->fulltime_Available))
                               <tr>
                                   <th>Availablity</th>
@@ -281,12 +276,17 @@
                                   <th>{{$agent->working_now=='on'||$agent->working_now==1?'Yes':'No'}}</th>
                               </tr>
                           @endif
+
                           @if(isset($agent->working_now_date) && $agent->working_now_date)
+
+                              <?php $date=date_create($agent->working_now_date); ?>
+
                               <tr>
                                   <th>Joining Date of Current Job</th>
-                                  <th>{{date($agent->working_now_date,'d-m-Y')}}</th>
+                                  <th>{{ date_format($date,"d-m-Y") }}</th>
                               </tr>
                           @endif
+
                           @if(isset($agent->description_activity) && $agent->description_activity)
                               <tr>
                                   <th>Current Job Description</th>

@@ -123,13 +123,13 @@
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">First Name</label>
                     <div class="col-sm-9">
-                        <input type="text" name="fname" value="{{ isset(Auth::user()->fname) ? Auth::user()->fname : old('fname')}}" class="form-control">
+                        <input type="text" name="fname" value="{{ isset(Auth::user()->fname) ? Auth::user()->fname : old('fname')}}" class="form-control" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Last Name</label>
                     <div class="col-sm-9">
-                        <input type="text" name="lname" value="{{ isset(Auth::user()->lname) ? Auth::user()->lname : old('lname')}}" value="{{ Auth::user()->lname }}" class="form-control">
+                        <input type="text" name="lname" value="{{ isset(Auth::user()->lname) ? Auth::user()->lname : old('lname')}}" value="{{ Auth::user()->lname }}" class="form-control" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -153,9 +153,9 @@
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Address</label>
                     <div class="col-sm-9">
-                        <input type="text" id="address-input" placeholder="Enter Address" required name="address" value="{{ isset(Auth::user()->address) ? Auth::user()->address : old('address') }}"  class="form-control map-input">
-                        <input type="hidden" required name="address_latitude" id="address-latitude" value="" />
-                        <input type="hidden" required name="address_longitude" id="address-longitude" value="" />
+                        <input type="text" id="address-input" placeholder="Enter Address" required name="address" value="{{ isset(Auth::user()->address) ? Auth::user()->address : old('address') }}" class="form-control map-input">
+                        <input type="hidden" required name="address_latitude" id="address-latitude" value="{{ isset(Auth::user()->map_latitude) ? Auth::user()->map_latitude : null }}" />
+                        <input type="hidden" required name="address_longitude" id="address-longitude" value="{{ isset(Auth::user()->map_longitude) ? Auth::user()->map_longitude : null }}" />
                     </div>
                 </div>
 
@@ -252,7 +252,7 @@
                             </label>
                             <div style="width: 100%;display: inline-block;">
                                 <label class="switch">
-                                    <input type="checkbox" name="visible" @php if(isset(Auth::user()->visible) && Auth::user()->visible=='on') echo "checked"; @endphp>
+                                    <input type="checkbox" name="visible" @php if(isset(Auth::user()->visible) && Auth::user()->visible==1) echo "checked"; @endphp>
                                     <span class="slider round"></span>
                                 </label>
                             </div>
@@ -271,9 +271,9 @@
                                     <span class="slider round"></span>
                                 </label>
                             </div>
-                            <div style="width: 100%;display: inline-block;margin-top: 30px;">
+                            {{--<div style="width: 100%;display: inline-block;margin-top: 30px;">
                                 Max <input type="number" min="0" max="48" value="{{ isset(Auth::user()->parttime_available_input) ? Auth::user()->parttime_available_input : old('parttime_available_input')}}" id="parttime_available_input" name="parttime_available_input" disabled> Hours per Week
-                            </div>
+                            </div>--}}
                         </div>
                         <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12" style="display: inline-block;float: right;">
                             <label class="left-label" style="float: left;">

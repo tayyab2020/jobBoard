@@ -64,16 +64,11 @@ class IndexController extends Controller
 
     public function callback($service) {
 
-
-
         $user = Socialite::with ( $service )->stateless()->user();
 
         if(!$user->email)
         {
-
-
             return redirect()->back()->withErrors('Please link your facebook account with an email address.');
-
         }
 
         $user = $this->createUser($user,$service);
@@ -87,13 +82,13 @@ class IndexController extends Controller
         }
     }
 
-    public  function createUser($getInfo,$provider){
-
+    public function createUser($getInfo,$provider){
 
         $user = User::where('provider_id', $getInfo->id)->orWhere('email',$getInfo->email)->first();
+
         if (!$user) {
             $user = User::create([
-                'fname'     => isset($getInfo->name)?$getInfo->name:'',
+                'fname'     => $getInfo->name,
                 'email'    => $getInfo->email,
                 'password' => bcrypt(Str::random(10)),
                 'provider' => $provider,

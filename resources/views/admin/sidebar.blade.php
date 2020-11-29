@@ -12,7 +12,7 @@
 			</div>
 			<div class="media-body media-middle">
 
-				<a href="{{ URL::to('admin/profile') }}" class="h4 margin-none">{{ Auth::user()->name }}</a>
+				<a href="{{ URL::to('admin/profile') }}" class="h4 margin-none">{{ Auth::user()->fname }}</a>
 				<ul class="list-unstyled list-inline margin-none">
 					<li><a href="{{ URL::to('admin/profile') }}"><i class="md-person-outline"></i></a></li>
 					@if(Auth::User()->usertype=="Admin")

@@ -38,7 +38,6 @@ class AdminController extends MainAdminController
     public function updateProfile(Request $request)
     {
 
-
     	$user = User::findOrFail(Auth::user()->id);
         $jobs=Jobs::where('user_id', Auth::user()->id)->get();
 
@@ -59,6 +58,14 @@ class AdminController extends MainAdminController
                     return redirect()->back()->withErrors($validator->messages())->withInput($request->input());
             }
 
+        if($request->visible == 'on')
+        {
+            $request->visible = 1;
+        }
+        else
+        {
+            $request->visible = 0;
+        }
 
 	    $inputs = $request->all();
 
@@ -122,7 +129,6 @@ class AdminController extends MainAdminController
         $user->license = $request->license;
         $user->visible = $request->visible;
         $user->parttime_available = $request->parttime_available;
-        $user->parttime_available_input = $request->parttime_available_input;
         $user->fulltime_available = $request->fulltime_available;
         $user->travel_distance = $request->travel_distance;
         $user->travel_city = $request->travel_city;
