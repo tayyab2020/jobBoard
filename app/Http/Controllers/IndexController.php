@@ -49,15 +49,19 @@ class IndexController extends Controller
         $file = public_path('upload/PDFs/'.$file_name.'.pdf');
         // Save the PDF file into temp folder
         $pdf->save($file);
-        /*$cv=new CV();
+        $cv=new CV();
         $cv->userId=Auth::user()->id;
         $cv->name=$file_name;
-        $cv->save();*/
+        $cv->save();
         \Session::flash('flash_message', 'Your CV has been Created');
         return redirect('cv/view/'.$file_name);
 
     }
 
+    public function manageCV () {
+        $all_CVs=CV::where('userId', Auth::user()->id)->get();
+        return view('manage_cv',compact('all_CVs'));
+    }
     public function redirect($service) {
         return Socialite::driver ( $service )->stateless()->redirect();
     }
